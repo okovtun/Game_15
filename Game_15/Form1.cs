@@ -21,15 +21,21 @@ namespace Game_15
 
         private void button15_Click(object sender, EventArgs e)
         {
-            int position = Convert.ToInt16(((Button)sender).Tag);
-            game.shift(position);
-            refresh();
-            if (game.chek_numbers())
-            {
-                MessageBox.Show("Victory!");
-                start_game();
+            int position;
+            if(sender.GetType() == button0.GetType())
+            { 
+                position = Convert.ToInt16(((Button)sender).Tag);
+                game.shift(position);
+                refresh();
+                if (game.chek_numbers())
+                {
+                    MessageBox.Show("Victory!");
+                    start_game();
+                }
+            
             }
-
+            
+            
             //button(position).Text = position.ToString();
             //MessageBox.Show(position.ToString());
         }
