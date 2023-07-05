@@ -22,9 +22,10 @@ namespace Game_15
         private void button15_Click(object sender, EventArgs e)
         {
             int position = Convert.ToInt16(((Button)sender).Tag);
+            game.shift(position);
+            refresh();
 
-            button(position).Text = position.ToString();
-
+            //button(position).Text = position.ToString();
             //MessageBox.Show(position.ToString());
         }
 
@@ -64,6 +65,8 @@ namespace Game_15
         private void start_game()
         {
             game.start();
+            for (int j = 0; j < 100; j++)
+                game.shift_random();
             refresh();
         }
 

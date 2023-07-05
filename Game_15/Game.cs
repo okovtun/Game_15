@@ -33,6 +33,24 @@ namespace Game_15
             map[space_x, space_y] = 0;//пустая позиция
         }
 
+        public void shift(int position) // метод перемещения значения с кнопки на кнопку
+        {
+            int x,y;
+            position_to_coords(position, out x, out y);
+
+            //проверка для перемещения клетки только рядом с пустой
+            //если сумма равна 2 значит мы перепрыгиваем вверх или в низ
+            if (Math.Abs(space_x - x) + Math.Abs(space_y - y) != 1)
+                return;
+
+            // в путую клетку записывам значение на которое нажали
+            map[space_x, space_y] = map[x, y];
+            //в предыдущую клетку записываем ноль
+            map[x, y] = 0;
+            space_x = x;
+            space_y = y;
+        }
+
         public int get_number(int position) //передаем номер кнопки и возвращаем что на ней написано
         {
             int x, y;
