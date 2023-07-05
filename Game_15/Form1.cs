@@ -24,6 +24,11 @@ namespace Game_15
             int position = Convert.ToInt16(((Button)sender).Tag);
             game.shift(position);
             refresh();
+            if (game.chek_numbers())
+            {
+                MessageBox.Show("Victory!");
+                start_game();
+            }
 
             //button(position).Text = position.ToString();
             //MessageBox.Show(position.ToString());
@@ -65,7 +70,7 @@ namespace Game_15
         private void start_game()
         {
             game.start();
-            for (int j = 0; j < 100; j++)
+            for (int j = 0; j < 100; j++) //перемешивание делается путем 100 случайных перемещенийб т.к.если заполнять рандомно можно наткнуться на изначальный пройгрыш
                 game.shift_random();
             refresh();
         }
